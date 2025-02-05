@@ -11,10 +11,38 @@
         <h1 data-testid="gameInstructions">Guess the correct color!</h1>
         <div data-testid="colorBox" class="color-box"></div>
         <div class="color-options"></div>
+        <button id="instructionsButton">Show Instructions</button>
+        <div id="instructionsModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Instructions: Click on the color boxes to guess the correct color. If you guess correctly, you can advance to the next round. If you guess wrong, the game is over!</p>
+            </div>
+        </div>
+
         <h2 data-testid="gameStatus"></h2>
         <h3 data-testid="score">Score: 0</h3>
         <button data-testid="newGameButton">New Game</button>
     </div>
-    <script src="script.js"></script>
+<script src="script.js"></script>
+<script>
+    const instructionsButton = document.getElementById('instructionsButton');
+    const modal = document.getElementById('instructionsModal');
+    const closeButton = document.querySelector('.close');
+
+    instructionsButton.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    closeButton.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
